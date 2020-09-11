@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif, 'montseratt';
+}
+.App {
+  background-image: url('./Assets/cold-bg.jpg');
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.App.warm {
+  background-image: url('./Assets/warm-bg.jpg');
+}
+main {
+  min-height: 100vh;
+  padding: 25px;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.75));
+}
+.search-container {
+  width: 100%; 
+  margin:  0 0 75px;
+}
+.search-container .search-bar {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  background-color: #ffffff;
+  border-radius: 0 0 16px 16px;
+  margin-top: -25px;
+  font-size: 20px;
+  transition: 0.4s ease;
+}
