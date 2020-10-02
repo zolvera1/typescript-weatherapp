@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Config from './Config'
+import Config from "./Config";
 import { useState } from "react";
 import Weather from "./Components/Weather";
 import axios from "axios";
@@ -22,27 +22,25 @@ const App = () => {
     name: "",
   });
 
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState("");
 
   const handleSubmit = (e: React.KeyboardEvent) => {
     if (e.key == "Enter") {
       axios
-      .get<IWeather>(
-        `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&appid=${Config.API_KEY}`
-      )
-      .then((result) => {
-        console.log(result);
-        setWeatherData(result.data);
-      });
+        .get<IWeather>(
+          `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&appid=${Config.API_KEY}`
+        )
+        .then((result) => {
+          console.log(result);
+          setWeatherData(result.data);
+        });
     }
-
-   
   };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=> {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
-  }
+  };
   return (
-    <div className="App">
+    <div className={weatherData.main.temp < 60 ? "App" : "App warm"}>
       <main>
         <div className="search-container">
           <input
@@ -51,10 +49,10 @@ const App = () => {
             placeholder="Search..."
             onKeyPress={handleSubmit}
             value={query}
-            onChange= {handleChange}
+            onChange={handleChange}
           />
         </div>
-        {weatherData.weather[0] ? <Weather data={weatherData}/> : ('')}
+        {weatherData.weather[0] ? <Weather data={weatherData} /> : ""}
       </main>
     </div>
   );
